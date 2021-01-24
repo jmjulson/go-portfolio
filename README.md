@@ -1,3 +1,5 @@
-"The html/template package" - pick up from here."
-https://golang.org/doc/articles/wiki/
-Keep Reading - https://golang.org/doc/faq#Pointers
+# Writing Web Applications
+###### https://golang.org/doc/articles/wiki/
+
+## Other Resources
+###### Keep Reading - https://golang.org/doc/faq#Pointers
