@@ -1,5 +1,11 @@
-# Writing Web Applications
-###### https://golang.org/doc/articles/wiki/
+# Writing Web Applications In Go
+build go binary
+```go build -o bin/wiki```
 
-## Other Resources
-###### Keep Reading - https://golang.org/doc/faq#Pointers
+run app
+```./bin/wiki```
+
+## Other Things To Read
+###### https://golang.org/pkg/net/http/
+###### https://golang.org/pkg/html/template/
+###### https://golang.org/doc/faq#Pointers

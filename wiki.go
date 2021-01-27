@@ -1,10 +1,10 @@
 package main
 
 import (
+	"html/template"
 	"io/ioutil"
 	"log"
 	"net/http"
-	"html/template"
 	"regexp"
 )
 
@@ -13,16 +13,16 @@ type Page struct {
 	Body []byte
 }
 
-var templates = template.Must(template.ParseFiles("edit.html", "view.html"))
+var templates = template.Must(template.ParseGlob("web/templates/*"))
 var validPath = regexp.MustCompile("^/(edit|save|view)/([a-zA-Z0-9]+)$")
 
 func (p *Page) save() error {
-	filename := p.Title + ".txt"
+	filename := "bin/" + p.Title + ".txt"
 	return ioutil.WriteFile(filename, p.Body, 0600)
 }
 
 func loadPage(title string) (*Page, error) {
-	filename := title + ".txt"
+	filename := "bin/" + title + ".txt"
 	body, err := ioutil.ReadFile(filename)
 	if err != nil {
 		return nil, err
@@ -31,7 +31,7 @@ func loadPage(title string) (*Page, error) {
 }
 
 func renderTemplate(w http.ResponseWriter, tmpl string, p *Page) {
-	err := templates.ExecuteTemplate(w, tmpl+".html", p)
+	err := templates.ExecuteTemplate(w, tmpl, p)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
@@ -43,7 +43,7 @@ func viewHandler(w http.ResponseWriter, r *http.Request, title string) {
         http.Redirect(w, r, "/edit/"+title, http.StatusFound)
         return
     }
-    renderTemplate(w, "view", p)
+    renderTemplate(w, "view.html", p)
 }
 
 func editHandler(w http.ResponseWriter, r *http.Request, title string) {
@@ -51,12 +51,12 @@ func editHandler(w http.ResponseWriter, r *http.Request, title string) {
     if err != nil {
         p = &Page{Title: title}
     }
-    renderTemplate(w, "edit", p)
+    renderTemplate(w, "edit.html", p)
 }
 
 func saveHandler(w http.ResponseWriter, r *http.Request, title string) {
     body := r.FormValue("body")
-    p := &Page{Title: title, Body: []byte(body)}
+	p := &Page{Title: title, Body: []byte(body)}
     err := p.save()
     if err != nil {
         http.Error(w, err.Error(), http.StatusInternalServerError)
