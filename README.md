@@ -9,8 +9,7 @@ run app
 * [X] Try to incoperate the makeHandler with the above.
 * [X] Try to move most of this out of main. Make it a single line. Like the example.
 * [] Read more about patterns around HanlderFunc and HandleFunc
-* [] Try to make the handle func have a URL path related to the file.
-* [] Try to make the files drive page path - // 	http.HandleFunc("/home/", makeHandler(viewHandler)) 
+* [] Try to make the files drive page path in HandleFunc()
 * [] Try  to use templating to generate headers, footers and components ( Nav, "ads") {{header}}
     * [] This might be called nested templates - Verify
 	* [] https://www.calhoun.io/intro-to-templates-p2-actions/
