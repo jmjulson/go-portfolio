@@ -8,6 +8,7 @@ run app
 ## Next Steps
 * [X] Try to incoperate the makeHandler with the above.
 * [X] Try to move most of this out of main. Make it a single line. Like the example.
+* [] Move site.go under server dir
 * [] Read more about patterns around HanlderFunc and HandleFunc
 * [] Try to make the files drive page path in HandleFunc()
 * [] Try  to use templating to generate headers, footers and components ( Nav, "ads") {{header}}
