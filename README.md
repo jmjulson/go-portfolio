@@ -47,4 +47,4 @@ include flexbox in CSS ```https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_F
 ###### Resource: https://golang.org/pkg/html/template/
 ###### Resource: https://golang.org/doc/faq#Pointers
 ###### Resource: https://www.calhoun.io/
-###### Examples: https://course.gowebexamples.com/?utm_source=banner
+###### Examples: https://course.gowebexamples.com/
